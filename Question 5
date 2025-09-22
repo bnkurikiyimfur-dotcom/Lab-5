@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+    // Reads 12 integers; prints all unique pairs whose sum is exactly 20.
+    // "Unique" means (x,y) is the same as (y,x); print once, no duplicates.
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] a = new int[12];
+
+        System.out.println("Enter 12 integers:");
+        for (int i = 0; i < a.length; i++) a[i] = in.nextInt();
+
+        // Use a Set of "min:max" keys to avoid duplicate pair prints.
+        Set<String> seen = new HashSet<>();
+        List<String> results = new ArrayList<>();
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++) { // i<j prevents same index + immediate dupes
+                if (a[i] + a[j] == 20) {
+                    int x = Math.min(a[i], a[j]);
+                    int y = Math.max(a[i], a[j]);
+                    String key = x + ":" + y;
+                    if (seen.add(key)) { // first time we see this ordered pair
+                        results.add("(" + x + ", " + y + ")");
+                    }
+                }
+            }
+        }
+
+        if (results.isEmpty()) {
+            System.out.println("No pairs sum to 20.");
+        } else {
+            System.out.println("Pairs that sum to 20 (unique): " + results);
+        }
+    }
+}
