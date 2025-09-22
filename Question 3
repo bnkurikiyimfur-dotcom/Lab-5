@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Main {
+    // Reads 6 exam scores, computes average, counts above/below average.
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        double[] scores = new double[6];
+
+        System.out.println("Enter 6 exam scores:");
+        for (int i = 0; i < scores.length; i++) scores[i] = in.nextDouble();
+
+        double sum = 0;
+        for (double s : scores) sum += s;
+        double avg = sum / scores.length;
+
+        int above = 0, below = 0;
+        for (double s : scores) {
+            if (s > avg) above++;
+            else if (s < avg) below++;
+        }
+
+        System.out.printf("Average: %.2f%n", avg);
+        System.out.println("Number above average: " + above);
+        System.out.println("Number below average: " + below);
+    }
+}
