@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+    // Reads 8 ints; prints min & max values and ALL their indices.
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] a = new int[8];
+
+        System.out.println("Enter 8 integers:");
+        for (int i = 0; i < a.length; i++) a[i] = in.nextInt();
+
+        int min = a[0], max = a[0];
+        for (int x : a) {
+            if (x < min) min = x;
+            if (x > max) max = x;
+        }
+
+        List<Integer> minIdx = new ArrayList<>();
+        List<Integer> maxIdx = new ArrayList<>();
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == min) minIdx.add(i);
+            if (a[i] == max) maxIdx.add(i);
+        }
+
+        System.out.println("Smallest value: " + min + " at indices " + minIdx);
+        System.out.println("Largest value:  " + max + " at indices " + maxIdx);
+    }
+}
