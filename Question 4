@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Main {
+    // Reads a word, stores chars in a char[], checks palindrome ignoring case.
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = in.nextLine();
+
+        // Extension: ignore case
+        String normalized = word.toLowerCase(Locale.ROOT);
+
+        // Store characters in a char array
+        char[] chars = normalized.toCharArray();
+
+        boolean isPalindrome = true;
+        for (int i = 0, j = chars.length - 1; i < j; i++, j--) {
+            if (chars[i] != chars[j]) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("\"" + word + "\" is " + (isPalindrome ? "" : "NOT ") + "a palindrome (case-insensitive).");
+    }
+}
